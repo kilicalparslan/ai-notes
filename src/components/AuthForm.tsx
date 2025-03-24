@@ -9,6 +9,7 @@ import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { Loader2 } from "lucide-react";
 import Link from "next/link";
+import { loginAction, registerAction } from "@/actions/users";
 
 type Props = {
   type: "login" | "register";
@@ -37,6 +38,17 @@ function AuthForm({ type }: Props) {
         errorMessage = (await registerAction(email, password)).errorMessage;
         title = "Registered";
         description = "Check your email to verify your account";
+      }
+
+      if (!errorMessage) {
+        toast.success(title, {
+          description,
+        });
+        router.replace("/");
+      } else {
+        toast.error("Error", {
+          description: errorMessage,
+        });
       }
     });
   };
