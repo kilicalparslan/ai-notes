@@ -13,6 +13,9 @@
 # testing
 /coverage
 
+#codesandbox
+/.codesandbox/
+
 # next.js
 /.next/
 /out/
