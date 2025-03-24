@@ -6,9 +6,9 @@ type Props = {
   user: User | null;
 };
 
-function AskAIButton({ user }: Props) {
+function NewNoteButton({ user }: Props) {
   console.log(user?.email);
-  return <div>AskAIButton</div>;
+  return <div>NewNoteButton</div>;
 }
 
-export default AskAIButton;
+export default NewNoteButton;
