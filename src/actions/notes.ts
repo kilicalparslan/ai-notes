@@ -3,8 +3,7 @@
 import { getUser } from "@/auth/server";
 import { prisma } from "@/db/prisma";
 import { handleError } from "@/lib/utils";
-import openai from "@/openai";
-import { ChatCompletionMessageParam } from "openai/resources/index.mjs";
+import { cohere } from "@/cohere";
 
 export const createNoteAction = async (noteId: string) => {
   try {
@@ -84,47 +83,34 @@ export const askAIAboutNotesAction = async (
   }
 
   const formattedNotes = notes
-    .map((note) =>
-      `
-    Text: ${note.text}
-    Created at: ${note.createdAt}
-    Last updated: ${note.updatedAt}
-    `.trim(),
+    .map(
+      (note) =>
+        `Text: ${note.text}\nCreated at: ${note.createdAt}\nLast updated: ${note.updatedAt}`,
     )
     .join("\n");
 
-  const messages: ChatCompletionMessageParam[] = [
-    {
-      role: "developer",
-      content: `
-              You are a helpful assistant that answers questions about a user's notes. 
-              Assume all questions are related to the user's notes. 
-              Make sure that your answers are not too verbose and you speak succinctly. 
-              Your responses MUST be formatted in clean, valid HTML with proper structure. 
-              Use tags like <p>, <strong>, <em>, <ul>, <ol>, <li>, <h1> to <h6>, and <br> when appropriate. 
-              Do NOT wrap the entire response in a single <p> tag unless it's a single paragraph. 
-              Avoid inline styles, JavaScript, or custom attributes.
-              
-              Rendered like this in JSX:
-              <p dangerouslySetInnerHTML={{ __html: YOUR_RESPONSE }} />
-        
-              Here are the user's notes:
-              ${formattedNotes}
-              `,
-    },
-  ];
+  const prompt = `
+      You are an AI assistant that answers questions based on the user's notes. 
+      Assume all questions are related to the user's notes.
+      Keep your answers short and concise.
+      Format your responses in valid HTML using appropriate tags like <p>, <strong>, <ul>, <li>, etc.
+      
+      Here are the user's notes:
+      ${formattedNotes}
+      
+      User's question:
+      ${newQuestions[newQuestions.length - 1]}
+    `;
 
-  for (let i = 0; i < newQuestions.length; i++) {
-    messages.push({ role: "user", content: newQuestions[i] });
-    if (responses.length > i) {
-      messages.push({ role: "assistant", content: responses[i] });
-    }
-  }
-
-  const completion = await openai.chat.completions.create({
-    model: "gpt-4o-mini",
-    messages,
+  const response = await cohere.generate({
+    model: "command-r-plus",
+    prompt,
+    maxTokens: 300,
+    temperature: 0.7,
   });
 
-  return completion.choices[0].message.content || "A problem has occurred";
+  return (
+    response.generations[0]?.text ||
+    "An error occurred while generating a response."
+  );
 };

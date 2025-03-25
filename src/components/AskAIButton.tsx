@@ -68,9 +68,19 @@ function AskAIButton({ user }: Props) {
     setTimeout(scrollToBottom, 100);
 
     startTransition(async () => {
-      const response = await askAIAboutNotesAction(newQuestions, responses);
-      setResponses((prev) => [...prev, response]);
-      setTimeout(scrollToBottom, 100);
+      try {
+        const response = await askAIAboutNotesAction(newQuestions, responses);
+        if (response) {
+          setResponses((prev) => [...prev, response]);
+          setTimeout(scrollToBottom, 100);
+        }
+      } catch (err) {
+        console.error("AI error:", err);
+        setResponses((prev) => [
+          ...prev,
+          "<p><em>AI could not process your request.</em></p>",
+        ]);
+      }
     });
   };
 
