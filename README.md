@@ -1,36 +1,107 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🧠 AI-Assisted Note Application
 
-## Getting Started
+A smart note-taking app powered by **Next.js**, **Supabase**, and **Cohere AI**.  
+Users can log in, write notes, and receive AI-generated summaries and actionable suggestions — all in one elegant interface.
 
-First, run the development server:
+## ✨ Features
+
+- 🔐 **Email Authentication** – Secure login via Supabase email verification.
+- 📝 **Note Management** – Add and manage notes in a minimal, user-friendly UI.
+- 🤖 **AI-Powered Summaries** – Notes are summarized using **Cohere AI**.
+- 📌 **Next Step Suggestions** – Automatically generate actionable next steps with AI.
+- ⚡ **Built with Next.js** – Fully integrated backend and frontend.
+- 🎨 **Modern UI** – Clean, responsive design using TailwindCSS and ShadCN UI components.
+
+## 🛠 Tech Stack
+
+| Category          | Tools & Libraries                                                                 |
+|------------------|------------------------------------------------------------------------------------|
+| **Framework**     | [Next.js](https://nextjs.org/)                                                    |
+| **Authentication**| [Supabase](https://supabase.com/) (`@supabase/supabase-js`, `@supabase/ssr`)      |
+| **AI Integration**| [Cohere AI](https://cohere.com/) (`cohere-ai`, `@ai-sdk/cohere`)                  |
+| **ORM / DB**      | [Prisma](https://www.prisma.io/) (`@prisma/client`) with Supabase PostgreSQL      |
+| **Styling**       | [Tailwind CSS](https://tailwindcss.com/), [tailwind-merge](https://github.com/dcastil/tailwind-merge), `tw-animate-css` |
+| **UI Components** | [ShadCN UI](https://ui.shadcn.dev/), [Radix UI](https://www.radix-ui.com/)        |
+| **Icons**         | [Lucide React](https://lucide.dev/)                                               |
+| **Utilities**     | `clsx`, `fuse.js`, `uuid`, `next-themes`, `sonner` (toast notifications)          |
+| **Linting / Format** | ESLint, Prettier, Prettier Tailwind Plugin                                      |
+| **Type Safety**   | TypeScript                                                                        |
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/kilicalparslan/ai-notes.git
+cd ai-notes
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+# or
+yarn install
+```
+
+### 3. Set up environment variables
+
+Create a .env.local file in the root of the project:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+COHERE_API_KEY=your_cohere_api_key
+```
+
+### 4. Run the app
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 to view it in the browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📸 Screenshots
 
-## Learn More
+**Notes Section**
 
-To learn more about Next.js, take a look at the following resources:
+![Imgur](https://i.imgur.com/EnroJdG.png)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Ask AI Section**
 
-## Deploy on Vercel
+![Imgur](https://i.imgur.com/TBQ8Jfg.png)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
