@@ -5,7 +5,7 @@ import NoteTextInput from "@/components/NoteTextInput";
 import { prisma } from "@/db/prisma";
 
 type Props = {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+  searchParams: { [key: string]: string | string[] | undefined };
 };
 
 async function HomePage({ searchParams }: Props) {
