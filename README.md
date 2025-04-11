@@ -21,7 +21,7 @@ Users can log in, write notes, and receive AI-generated summaries and actionable
 | **AI Integration**| [Cohere AI](https://cohere.com/) (`cohere-ai`, `@ai-sdk/cohere`)                  |
 | **ORM / DB**      | [Prisma](https://www.prisma.io/) (`@prisma/client`) with Supabase PostgreSQL      |
 | **Styling**       | [Tailwind CSS](https://tailwindcss.com/), [tailwind-merge](https://github.com/dcastil/tailwind-merge), `tw-animate-css` |
-| **UI Components** | [ShadCN UI](https://ui.shadcn.dev/), [Radix UI](https://www.radix-ui.com/)        |
+| **UI Components** | [ShadCN UI](https://ui.shadcn.com/), [Radix UI](https://www.radix-ui.com/)        |
 | **Icons**         | [Lucide React](https://lucide.dev/)                                               |
 | **Utilities**     | `clsx`, `fuse.js`, `uuid`, `next-themes`, `sonner` (toast notifications)          |
 | **Type Safety**   | TypeScript                                                                        |
