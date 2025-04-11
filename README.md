@@ -24,7 +24,6 @@ Users can log in, write notes, and receive AI-generated summaries and actionable
 | **UI Components** | [ShadCN UI](https://ui.shadcn.dev/), [Radix UI](https://www.radix-ui.com/)        |
 | **Icons**         | [Lucide React](https://lucide.dev/)                                               |
 | **Utilities**     | `clsx`, `fuse.js`, `uuid`, `next-themes`, `sonner` (toast notifications)          |
-| **Linting / Format** | ESLint, Prettier, Prettier Tailwind Plugin                                      |
 | **Type Safety**   | TypeScript                                                                        |
 
 ## 🚀 Getting Started
